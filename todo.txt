@@ -1,0 +1,6 @@
+-- De facut paginile principale (crearea tuturor paginilor, impartirea pe categorii, placeholdere pentru chestiile din baza de date)
+-- De stilizat paginile principale (Responsive, schema cromatica, stilizare meniu, stilizare produse)
+-- Adaugare npm si creat rute cu expressjs
+-- Creare baza de date si tabele
+-- creare ruta pentru elementele din bd
+

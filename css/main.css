@@ -1,0 +1,130 @@
+:root {
+  --color-dark:  #161616;
+  --color-ocean:  #416dea;
+  --color-grass: #3dd28d;
+  --color-snow: #FFFFFF;
+  --color-salmon: #F32C52;
+  --color-sun: #feee7d;
+  --color-alge: #7999a9;
+  --color-flower: #5d66dd;
+  --color-smoke: #e4e4e4;
+}
+
+.main1 {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.spatiu-gol {
+  margin-top: 8em;
+}
+
+.logoecomed {
+  width: 190px;
+}
+
+.scrismare {
+  font-size: 18px;
+}
+
+.custom-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding: 10px 10px 10px 10px;
+  width: 12em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
+  color: #fff;
+  border: 0 none;
+  border-radius: 36px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 160px;
+          flex: 0 0 160px;
+}
+
+.custom-button:hover {
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+  opacity: .85;
+}
+
+.custom-button:active {
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+  opacity: .75;
+}
+
+.custom-button:focus {
+  outline: 1px dotted #959595;
+  outline-offset: -4px;
+}
+
+.custom-button.anotherblue {
+  color: var(--color-snow);
+  background: var(--color-flower) !important;
+}
+
+.custom-button.-black {
+  color: var(--color-snow);
+  background: var(--color-dark) !important;
+}
+
+.custom-button.-blue {
+  color: var(--color-snow);
+  background: var(--color-ocean);
+}
+
+.custom-button.-red {
+  color: var(--color-snow);
+  background: var(--color-salmon);
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.custom-button.-green {
+  color: var(--color-snow);
+  background: var(--color-grass);
+}
+
+.footer-clip {
+  -webkit-clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%);
+          clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%);
+  background: #118b52;
+  padding-bottom: 40px;
+}
+
+.item {
+  margin-bottom: 30px;
+}
+
+footer {
+  background: #118b52;
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer a, footer p {
+  color: #f0f0f0;
+}

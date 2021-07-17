@@ -1,0 +1,72 @@
+<!-- HEADER -->
+<header>
+    <nav class=" navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+              <img src="/logoecomed.png" alt="" class="logoecomed">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="scrismare nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="scrismare nav-link" href="/analize">Analize</a>
+              </li>
+              <li class="nav-item">
+                <a class="scrismare nav-link" href="/consultatii-ecografii">Consultatii si ecografii</a>
+              </li>
+              <li class="nav-item">
+                <% if(lungime === 0) { %>
+                  <a class="scrismare nav-link" href="/cos">Cos</a> 
+                <% } else { %>
+                  <a class="scrismare nav-link" href="/cos">Cos: <%-lungime %></a> 
+                <% } %>
+              </li>
+              <li class="nav-item">
+                <a class="scrismare nav-link" href="/programare-online">Programare online</a>
+              </li>
+              <li class="nav-item">
+                <div class="input-group rounded">
+                  <form action="/search" class="d-flex" method="GET">
+                    <input name="key" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand abs" href="#">Navbar 1</a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="collapseNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//codeply.com">Codeply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#myAlert" data-bs-toggle="collapse">Link</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="" data-bs-target="#myModal" data-bs-toggle="modal">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+</header>
+<!-- /HEADER -->

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ("../fragmente/head") -%>
+<body>
+    <%- include ("../fragmente/header") -%>
+    <div class="spatiu-gol">
+    </div>
+
+    <% if(locals.arr.length === 0) { %>
+        <center><h5 class="display-6" style='margin-top: 5em'>Cosul este gol!</h5></center>
+        <div class="spatiu-gol">
+        </div>
+    <% } else { %>
+        <div class="container">
+            <div class="contentbar">
+                <div class="row">
+                    <h5 class="display-6">Cos:</h5>
+                    <div class="">
+                        <div class="card">
+                            <div class="row align-items-center justify-content-center">
+                                <div class="col-lg-10 col-xl-8">
+                                    <div class="cart-container">
+                                        <div class="cart-head">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+    
+                                                    <thead>
+                                                        <tr>
+                                                            <!-- <th scope="col">#</th> -->
+                                                            <th scope="col">Nume</th>
+                                                            <th scope="col">Pret</th>
+                                                            <th scope="col">Actiune</th>
+                                                        </tr>
+                                                    </thead>
+    
+                                                    <tbody>
+                                                        <% for(let obj of locals.arr) { %>
+                                                            <tr>
+                                                                <td> <%- obj.nume %> </td>
+                                                                <td> <%- obj.pret %> RON</td>
+                                                                <td> 
+                                                                    <form action="/stergedincos/<%=index%>" method="POST">
+                                                                        <input type="submit" class="custom-button -red"  value="Sterge">
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                            <% x += obj.pret %>
+                                                            <% index += 1 %>
+                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                                <h5 class="display-6">Total: <b style="color:#F32C52"><%=x%></b> RON</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <%- include ("../fragmente/footer") -%>
+</body>
+</html>

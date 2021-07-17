@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ("../fragmente/head") -%>
+    <body>
+        <%- include ("../fragmente/header") -%>
+
+        <!-- MAIN -->
+    <main>
+        <div class="spatiu-gol">
+        </div>
+
+        <div class="main1 container">
+            <!-- DESCRIERE WEBSITE -->
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-5 col-sm-10">
+                    <h1 class="display-6">EcomedMobile, sistem de programari.</h1>
+                
+                    <p class="lead">
+                        Va puteti programa direct cu analizele si consultatiile/ecografiile pe care doriti sa le efectuati.
+                    </p>
+                    <p>Alegeti investigatiile la care doriti sa va programati, 
+                    si introduceti datele cerute in rubrica "Programare Online".</p>
+    
+                    <p>Pentru a fi mai usor pentru dumneavoastra, <b>pretul</b> investigatiilor este de asemenea calculat imediat ce tot adaugati in cos.</p>
+                    <p>Daca dumneavoastra considerati ca nu ati ales investigatiile corespunzatoare,puteti sa <b>editati cosul</b>, accesand pagina <i>Cos</i>.</p>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-10">
+                    <img src="/icon1.png" alt="icon" style="width: 300px; margin-left:50%;">
+                </div>
+            </div>
+            <!-- /DESCRIERE WEBSITE -->
+
+            <div class="spatiu-gol">
+            </div>
+
+            <div>
+                <!-- INCEPUT PARTEA A DOUA DE MAIN -->
+                <h1 class="display-6">Putem incepe:</h1>
+                <p class="lead"> 
+                    Pentru a vedea lista completa pentru respectiva categorie, puteti sa apasati pe butonul de <b>"Vezi mai mult"</b>
+                </p>
+                <!-- / INCEPUT PARTEA A DOUA DE MAIN -->
+
+                <h5 class="display-6">Analize:</h5>
+                <!-- LISTA DE PRODUSE -->
+                <div class="row align-items-start justify-content-center">
+                    <!-- PRODUSE -->
+                    <% for(let analiz of locals.analize) { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                                <div class="about-product text-center mt-2">
+                                    <div>
+                                        <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- analiz.nume %></h4>
+                                        <h6 class="mt-0 text-black-50"></h6>
+                                    </div>
+                                </div>
+                                <div class="stats mt-2">
+                                    <div class="d-flex justify-content-between p-price"><span>Timp de executie:</span><span><%- analiz.timpexecutie %></span></div>
+                                    <div class="d-flex justify-content-between p-price"><span>Tip analiza:</span><span></span><%- analiz.tipanaliza %></div>
+                                    <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- analiz.pret %> RON</span></div>
+                                </div>
+                                <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
+                                <center style="margin-top: 10px;">
+                                    <form action="/analize/adauga/<%-analiz.id_analize%>" method="POST">
+                                        <input type="submit" class="custom-button -green"  value="Adauga">
+                                    </form>
+                                    <!-- <a href="" class="custom-button anotherblue"> Mai multe informatii </a> -->
+                                </center>
+                            </div>
+                        </div>
+                    <% } %>
+                    <center style="margin-top: 40px;">
+                        <a href="" class="custom-button -black"> Vezi mai mult </a>
+                    </center>
+                    <!-- /PRODUSE -->
+                </div>
+
+                <div class="spatiu-gol">
+                </div>
+
+                <h5 class="display-6">Consultatii:</h5>
+                <!-- LISTA DE PRODUSE -->
+                <div class="row align-items-start justify-content-center">
+                    <!-- PRODUSE -->
+                    <% for(let consult of locals.consultatii) { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                                <div class="about-product text-center mt-2">
+                                    <div>
+                                        <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- consult.nume %></h4>
+                                        <h6 class="mt-0 text-black-50"></h6>
+                                    </div>
+                                </div>
+                                <div class="stats mt-2">
+                                    <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- consult.pret %> RON</span></div>
+                                </div>
+                                <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
+                                <center style="margin-top: 10px;">
+                                    <form action="/consultatii/adauga/<%-consult.id_consultatie%>" method="POST">
+                                        <input type="submit" class="custom-button -green"  value="Adauga">
+                                    </form>
+                                    <!-- <a href="" class="custom-button anotherblue"> Mai multe informatii </a> -->
+                                </center>
+                            </div>
+                        </div>
+                    <% } %>
+                    <!-- /PRODUSE -->
+                </div>
+                <!-- /LISTA DE PRODUSE -->
+                <center style="margin-top: 40px;">
+                    <a href="" class="custom-button -black"> Vezi mai mult </a>
+                </center>
+
+                <div class="spatiu-gol">
+
+                </div>
+
+
+                <h5 class="display-6">Consultatii:</h5>
+                <!-- LISTA DE PRODUSE -->
+                <div class="row align-items-start justify-content-center">
+                    <!-- PRODUSE -->
+                    <% for(let ecog of locals.ecografii) { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                                <div class="about-product text-center mt-2">
+                                    <div>
+                                        <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- ecog.nume %></h4>
+                                        <h6 class="mt-0 text-black-50"></h6>
+                                    </div>
+                                </div>
+                                <div class="stats mt-2">
+                                    <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- ecog.pret %> RON</span></div>
+                                </div>
+                                <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
+                                <center style="margin-top: 10px;">
+                                    <form action="/ecografii/adauga/<%-ecog.id_ecografie%>" method="POST">
+                                        <input type="submit" class="custom-button -green"  value="Adauga">
+                                    </form>
+                                    <!-- <a href="" class="custom-button anotherblue"> Mai multe informatii </a> -->
+                                </center>
+                            </div>
+                        </div>
+                    <% } %>
+                    <!-- /PRODUSE -->
+                </div>
+                </div>
+                <!-- /LISTA DE PRODUSE -->
+                <center style="margin-top: 40px;">
+                    <a href="" class="custom-button -black"> Vezi mai mult </a>
+                </center>
+            </div>
+        </div>
+    </main>
+    <!-- /MAIN -->
+
+    <%- include ("../fragmente/footer") -%>
+
+    </body>
+</html>

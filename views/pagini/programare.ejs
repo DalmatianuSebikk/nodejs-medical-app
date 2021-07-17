@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ("../fragmente/head") -%>
+<body>
+    <%- include ("../fragmente/header") -%>
+    <div class="spatiu-gol">
+    </div>
+    <% if(arr.length === 0) { %>
+        <div class="container">
+            <center>
+                <h6 class="display-6">Cosul este gol!</h6>
+                <p class="lead">Adaugati elemente in cos pentru a va putea programa.</p>
+            </center>
+        </div>
+    <% } else {%>
+        <div class="container">
+            <div class="row">
+                <% if(Object.keys(errors).length == 0 && locals.eroareLimiter === '') { %>
+                    
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="display-6">Formular de programare:</h4>
+                        <% if(locals.succes != '') {%>
+                            <h5 class="display-6" style="color: green;"> Mesajul a fost trimis! </h5>
+                            <br>
+                            <p class="lead" style="color: green;" > <%= succes %> </p>
+                        <% } %>
+                        
+                        <form method="POST" action="/programare-online" class="needs-validation" style="margin-top: 50px;" novalidate>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nume"><h5>Nume <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <input name="nume" type="text" class="form-control" id="nume" placeholder="Nume" value required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="prenume"><h5>Prenume <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <input name="prenume" type="text" class="form-control" id="prenume" placeholder="Prenume" value required>
+                                </div>
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label for="numeSiPrenume"><h5>Nume si prenume <span class="text-muted">(Obligatoriu)</span>: </h5> </label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div> -->
+                            
+                            <div class="mb-3">
+                                <label for="numarDeTelefon"><h5>Numar de telefon <span class="text-muted">(Obligatoriu)</span>:</h5></label>
+                                <input name="numarDeTelefon" type="text" class="form-control" id="numarDeTelefon" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email"><h5>E-mail <span class="text-muted">(Optional)</span>:</h5></label>
+                                <input name="email" type="email" class="form-control" id="email" placeholder="nume@exemplu.com">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dataProgramare"><h5>Data programarii<span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <input name="dataProgramare" type="date" class="form-control" id="nume" placeholder="Apasa aici pentru a introduce data" name="" value required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="locatie"><h5>Locatie <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <select name="locatie" id="locatie" class="form-select">
+                                        <option value="Dorohoi">Dorohoi</option>
+                                        <option value="Botosani" selected>Botosani</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <center>
+                                <input type="submit" class="custom-button -blue" style="margin-top: 10px;" value="Finalizeaza">
+                            </center>
+                            
+        
+                        </form>
+                        
+                    </div>
+    
+                    <!-- COS -->
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="display-6 d-flex justify-content-between align-items-center mb-3">
+                        Cos:
+                        
+                    </h4>
+                    <ul class="list-group mb-3" style="margin-top: 50px;">
+                        <% for(let obj of locals.arr){ %>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <h6><%-obj.nume%></h6>
+                                <span class="text-muted"><%- obj.pret %> RON</span>
+                            </li>
+                            <% x += obj.pret %>
+                        <% } %>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><h4>Pret total:</h4></span>
+                            <strong><h4><%=x%> RON</h4></strong>
+                        </li>
+                    </ul>
+                </div>
+    
+                 
+                <% } else {%>
+    
+                    <!-- ------------------ELSE---------------------- -->
+                    
+                    <!-- <ul class="errors-list">
+                        <% Object.values(errors).forEach(error => { %>
+                          <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul> -->
+    
+    
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="display-6">Formular de programare:</h4>
+                        <h5 class="display-6" style="color: red;"> <%= eroareLimiter %></h5>
+                        <form method="POST" action="/programare-online" class="needs-validation" style="margin-top: 50px;" novalidate>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <div class="row">
+                                <div class="col-md-6 mb-3 form-field <%= errors.message ? 'form-field-invalid' : '' %>">
+                                    <label for="nume"><h5>Nume <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <% if(errors.nume) {%>
+                                        <div class="error"> <p style="color:red;"> <%=errors.nume.msg %> </p>  </div>
+                                    <% } %>
+                                    <input name="nume" type="text" class="form-control" id="nume" placeholder="Nume" value="<%= data.nume %>" required>
+                                </div>
+                                <div class="col-md-6 mb-3 form-field <%= errors.message ? 'form-field-invalid' : '' %>">
+                                    <label for="prenume"><h5>Prenume <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <% if(errors.prenume) {%>
+                                        <div class="error"> <p style="color:red;"> <%=errors.prenume.msg %> </p> </div>
+                                    <% } %>
+                                    <input name="prenume" type="text" class="form-control" id="prenume" placeholder="Prenume" value="<%= data.prenume %>" required>
+                                </div>
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label for="numeSiPrenume"><h5>Nume si prenume <span class="text-muted">(Obligatoriu)</span>: </h5> </label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div> -->
+                            
+                            <div class="mb-3 form-field <%= errors.message ? 'form-field-invalid' : '' %>">
+                                <label for="numarDeTelefon"><h5>Numar de telefon <span class="text-muted">(Obligatoriu)</span>:</h5></label>
+                                <% if(errors.numarDeTelefon) {%>
+                                    <div class="error"> <p style="color:red;"> <%=errors.numarDeTelefon.msg %> </p> </div>
+                                <% } %>
+                                <input name="numarDeTelefon" type="text" class="form-control" id="numarDeTelefon" value="<%=data.numarDeTelefon%>" required>
+                            </div>
+                            
+                            <div class="mb-3 form-field <%= errors.message ? 'form-field-invalid' : '' %>">
+    
+                                <label for="email"><h5>E-mail <span class="text-muted">(Optional)</span>:</h5></label>
+                                <% if(errors.email) {%>
+                                    <div class="error"> <p style="color:red;"><%=errors.email.msg %></p> </div>
+                                <% } %>
+                                <input name="email" type="email" class="form-control" id="email" value="<%=data.email%>" placeholder="nume@exemplu.com">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dataProgramare"><h5>Data programarii<span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <% if(errors.dataProgramare) {%>
+                                        <div class="error"> <p style="color:red;"> <%=errors.dataProgramare.msg %> </p> </div>
+                                    <% } %>
+                                    <input type="date" class="form-control" id="nume" placeholder="Apasa aici pentru a introduce data" name="dataProgramare" value="<%=data.dataProgramare%>" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="locatie"><h5>Locatie <span class="text-muted">(Obligatoriu)</span>: </h5></label>
+                                    <select name="locatie" id="locatie" class="form-select" value="<%=data.locatie%>">
+                                        <option value="Dorohoi">Dorohoi</option>
+                                        <option value="Botosani" selected>Botosani</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <center>
+                                <input type="submit" class="custom-button -blue" style="margin-top: 10px;" value="Finalizeaza">
+                            </center>
+        
+                        </form>
+                        
+                    </div>
+    
+                    <!-- COS -->
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="display-6 d-flex justify-content-between align-items-center mb-3">
+                        Cos:
+                    </h4>
+                    <ul class="list-group mb-3" style="margin-top: 50px;">
+                        <% for(let obj of locals.arr){ %>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <h6><%-obj.nume%></h6>
+                                <span class="text-muted"><%- obj.pret %> RON</span>
+                            </li>
+                            <% x += obj.pret %>
+                        <% } %>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><h4>Pret total:</h4></span>
+                            <strong><h4><%=x%> RON</h4></strong>
+                        </li>
+                    </ul>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    <%- include ("../fragmente/footer") -%>
+</body>
+</html>

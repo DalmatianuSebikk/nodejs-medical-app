@@ -1,0 +1,124 @@
+:root{
+  --color-dark:  #161616;
+  --color-ocean:  #416dea;
+  --color-grass: #3dd28d;
+  --color-snow: #FFFFFF;
+  --color-salmon: #F32C52;
+  --color-sun: #feee7d;
+  --color-alge: #7999a9;
+  --color-flower: #5d66dd;
+  --color-smoke: #e4e4e4;
+}
+
+.main1{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.spatiu-gol{
+    margin-top:8em;
+}
+
+.logoecomed{
+    width:190px;
+}
+.scrismare{
+    font-size:18px;
+}
+
+.custom-button{
+  display: flex;
+  overflow: hidden;
+
+//   margin-right: 2em;
+  margin-bottom: 10px;
+  padding: 10px 10px 10px 10px;
+  width: 12em;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms linear;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
+
+  color: #fff;
+  border: 0 none;
+  border-radius: 36px;
+
+//   font-size: 13px;
+//   font-weight: 500;
+//   line-height: 1.3;
+
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+ 
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px;
+//   width: 150px;
+
+  &:hover {
+    transition: all 150ms linear;
+
+    opacity: .85;
+  }
+  
+  &:active {
+    transition: all 150ms linear;
+    opacity: .75;
+  }
+  
+  &:focus {
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
+  }
+}
+.custom-button.anotherblue {
+  color: var(--color-snow);
+  background: var(--color-flower) !important;
+}
+
+.custom-button.-black{
+  color: var(--color-snow);
+  background: var(--color-dark) !important;
+}
+
+.custom-button.-blue {
+    color: var(--color-snow);
+    background: var(--color-ocean);
+  }
+
+.custom-button.-red{
+  color: var(--color-snow);
+  background: var(--color-salmon);
+}
+
+a{
+    text-decoration: none !important;
+}
+.custom-button.-green {
+    color: var(--color-snow);
+    background: var(--color-grass);
+  }
+
+
+.footer-clip{
+    clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%);
+    background: #118b52;
+    padding-bottom: 40px;
+
+    
+}
+.item{
+    margin-bottom: 30px;
+}
+footer{
+    background: #118b52;
+    h1, h2, h3, h4, h5, a, p {
+        color: rgb(240, 240, 240);
+    }
+    
+}
