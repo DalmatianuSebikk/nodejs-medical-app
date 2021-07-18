@@ -204,7 +204,7 @@ router.post('/programare-online', csrfProtection, [
                     }
                     else{
                         console.log('Ok, trimis');
-                        res.flash('success', 'Programarea a fost facuta cu succes. Veti primi confirmarea prin apel telefonic sau prin e-mail.');
+                        // res.flash('success', 'Programarea a fost facuta cu succes. Veti primi confirmarea prin apel telefonic sau prin e-mail.');
                         res.render('pagini/programare.ejs', {
                             arr: req.session.cart, 
                             lungime:req.session.cart.length, 
