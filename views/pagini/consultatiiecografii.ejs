@@ -5,23 +5,36 @@
     <%- include ("../fragmente/header") -%>
     <div class="spatiu-gol">
     </div>
+    <div class="container-mobile container d-flex flex-column  justify-content-center">
+        <% if(lungime != 0) { %>
+            <div class="d-flex align-items-center justify-content-around">
+                <h5 class="display-6">Cos: <span style="color: red"><%-lungime %></span></h5> 
+                <a href="/cos" class="custom-button -green">Vizualizare </a>
+            </div>
+        <% } %>
+            <form action="/search" class="d-flex" method="GET">
+                <input name="key" class="form-control me-2" type="search" placeholder="Cauta investigatii" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        
+    </div>
     <div class="container">
-        <div class="row align-items-start justify-content-center">
-            <h1 class="display-6">Lista completa consultatii:</h1>
+        <div class="row align-items-stretch d-flex justify-content-center">
+            <h1 class="display-6">Lista consultatii:</h1>
             <% for(let consult of locals.consultatii) { %>
-                <div class="col-lg-4 col-md-6">
-                    <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-10" style="margin-top:15px;">
+                    <div class="d-flex flex-column items analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
                         <div class="about-product text-center mt-2">
                             <div>
-                                <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- consult.nume %></h4>
+                                <h4 class="display-6" style="color:rgb(9, 141, 79); font-size: 30px;"><%- consult.nume %></h4>
                                 <h6 class="mt-0 text-black-50"></h6>
                             </div>
                         </div>
                         <div class="stats mt-2">
-                            <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- consult.pret %> RON</span></div>
+                            <div class="p-price"><center><span>Pret:</span><span style='color:rgb(228, 35, 35)'><b><%- consult.pret %> RON</b></span></center></div>
                         </div>
                         <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
-                        <center style="margin-top: 10px;">
+                        <center style="margin-top: auto;">
                             <form action="/consultatii/adauga/<%-consult.id_consultatie%>" method="POST">
                                 <input type="submit" class="custom-button -green"  value="Adauga">
                             </form>
@@ -31,21 +44,21 @@
                 </div>
             <% } %>
 
-            <h1 class="display-6" style="margin-top: 40px;">Lista completa ecografii:</h1>
+            <h1 class="display-6" style="margin-top: 40px;">Lista ecografii:</h1>
                 <% for(let ecog of locals.ecografii) { %>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-10" style="margin-top:15px;">
+                        <div class="d-flex flex-column items analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
                             <div class="about-product text-center mt-2">
                                 <div>
-                                    <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- ecog.nume %></h4>
+                                    <h4 class="display-6" style="color:rgb(9, 141, 79); font-size: 30px;"><%- ecog.nume %></h4>
                                     <h6 class="mt-0 text-black-50"></h6>
                                 </div>
                             </div>
                             <div class="stats mt-2">
-                                <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- ecog.pret %> RON</span></div>
+                                <div class="p-price"><center><span>Pret:</span><span style='color:rgb(228, 35, 35)'><b><%- ecog.pret %> RON</b></span></center></div>
                             </div>
                             <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
-                            <center style="margin-top: 10px;">
+                            <center style="margin-top: auto;">
                                 <form action="/ecografii/adauga/<%-ecog.id_ecografie%>" method="POST">
                                     <input type="submit" class="custom-button -green"  value="Adauga">
                                 </form>

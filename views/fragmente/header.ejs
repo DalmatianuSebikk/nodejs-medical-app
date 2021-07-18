@@ -3,7 +3,7 @@
     <nav class=" navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <div class="container">
           <a class="navbar-brand" href="/">
-              <img src="/logoecomed.png" alt="" class="logoecomed">
+            <img src="/logoecomed.png" alt="" class="logoecomed">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,22 +17,22 @@
                 <a class="scrismare nav-link" href="/analize">Analize</a>
               </li>
               <li class="nav-item">
-                <a class="scrismare nav-link" href="/consultatii-ecografii">Consultatii si ecografii</a>
+                <a class="scrismare nav-link" href="/consultatii-ecografii">Consultatii ecografii</a>
               </li>
               <li class="nav-item">
                 <% if(lungime === 0) { %>
                   <a class="scrismare nav-link" href="/cos">Cos</a> 
                 <% } else { %>
-                  <a class="scrismare nav-link" href="/cos">Cos: <%-lungime %></a> 
+                  <a class="scrismare nav-link" href="/cos">Cos:<%-lungime %></a> 
                 <% } %>
               </li>
               <li class="nav-item">
-                <a class="scrismare nav-link" href="/programare-online">Programare online</a>
+                <a class="scrismare nav-link" href="/programare-online">Programare</a>
               </li>
               <li class="nav-item">
                 <div class="input-group rounded">
                   <form action="/search" class="d-flex" method="GET">
-                    <input name="key" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input name="key" class="form-control me-2" type="search" placeholder="Cautare investigatii" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>
                 </div>
@@ -68,5 +68,6 @@
             </div>
         </div>
     </nav> -->
+    
 </header>
 <!-- /HEADER -->

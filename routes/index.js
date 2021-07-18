@@ -94,9 +94,9 @@ router.get(['/', '/index'], async (req, res) => {
     console.log('Request pentru pagina principala.');
     // res.render('pagini/index.ejs');
     // IAU PRIMELE 3 ELEMENTE DIN TABELA DE ANALIZE
-    var stringQuery1 = 'SELECT * FROM analize LIMIT 3';
-    var stringQuery2 = 'SELECT * FROM consultatii LIMIT 3';
-    var stringQuery3 = 'SELECT * FROM ecografii LIMIT 3';
+    var stringQuery1 = 'SELECT * FROM analize LIMIT 4';
+    var stringQuery2 = 'SELECT * FROM consultatii LIMIT 4';
+    var stringQuery3 = 'SELECT * FROM ecografii LIMIT 4';
     const rezultat = await client.query(stringQuery1, function(err, rez){
         // console.log(err, rez);
         client.query(stringQuery2, function(err, rez2){
@@ -204,7 +204,7 @@ router.post('/programare-online', csrfProtection, [
                     }
                     else{
                         console.log('Ok, trimis');
-                        req.flash('success', 'Programarea a fost facuta cu succes. Veti primi confirmarea prin apel telefonic sau prin e-mail.');
+                        res.flash('success', 'Programarea a fost facuta cu succes. Veti primi confirmarea prin apel telefonic sau prin e-mail.');
                         res.render('pagini/programare.ejs', {
                             arr: req.session.cart, 
                             lungime:req.session.cart.length, 
@@ -233,6 +233,8 @@ router.post('/programare-online', csrfProtection, [
 
 router.get('/search', async (req, res) => {
     console.log(req.query.key)
+    let stringSearch = req.query.key;
+    // stringSearch.toLowerCase();
     if(!req.query.key){
         let stringSearchQuery1 = "SELECT * FROM analize";
         let stringSearchQuery2 = "SELECT * FROM consultatii";
@@ -261,9 +263,9 @@ router.get('/search', async (req, res) => {
         })
     }
     else{
-        let stringSearchQuery1 = "SELECT * FROM analize WHERE nume LIKE '%" + req.query.key + "%'";
-        let stringSearchQuery2 = "SELECT * FROM consultatii WHERE nume LIKE '%" + req.query.key + "%'";
-        let stringSearchQuery3 = "SELECT * FROM ecografii WHERE nume LIKE '%" + req.query.key + "%'";
+        let stringSearchQuery1 = "SELECT * FROM analize WHERE LOWER(nume) LIKE '%" + stringSearch.toLowerCase() + "%'";
+        let stringSearchQuery2 = "SELECT * FROM consultatii WHERE LOWER(nume) LIKE '%" + stringSearch.toLowerCase() + "%'";
+        let stringSearchQuery3 = "SELECT * FROM ecografii WHERE LOWER(nume) LIKE '%" + stringSearch.toLowerCase() + "%'";
         const rezultat = await client.query(stringSearchQuery1, function(errAnalize, rezAnalize){
             if(errAnalize){
                 console.log(errAnalize);

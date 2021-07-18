@@ -5,10 +5,22 @@
     <%- include ("../fragmente/header") -%>
     <div class="spatiu-gol">
     </div>
-
+    <div class="container-mobile container d-flex flex-column  justify-content-center">
+        <% if(lungime != 0) { %>
+            <div class="d-flex align-items-center justify-content-around">
+                <h5 class="display-6">Cos: <span style="color: red"><%-lungime %></span></h5> 
+                <a href="/cos" class="custom-button -green">Vizualizare </a>
+            </div>
+        <% } %>
+            <form action="/search" class="d-flex" method="GET">
+                <input name="key" class="form-control me-2" type="search" placeholder="Cauta investigatii" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        
+    </div>
     <div class="container">
         <!-- INTRO PAGINA DE ANALIZE MEDICALE -->
-        <h1 class="display-6">Lista completa analize medicale:</h1>
+        <h1 class="display-6">Lista analize medicale:</h1>
         <p class="lead">Pentru usurinta, puteti utiliza filtrele de mai jos:</p>
         <div class="error"><p style="color:red"> <%= eroare %></p></div>
         <!-- /INTRO PAGINA DE ANALIZE MEDICALE -->
@@ -22,8 +34,11 @@
                         <option value="<%- categor.categ %>"><%- categor.categ %></option>
                     <% } %>
                 </select>
-                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="sortare" value="true">
-                <label class="custom-button -black" for="btncheck1" style="margin-top: 10px;" >Sorteaza alfabetic</label>
+                <br>
+                <input type="checkbox" class="form-check-input" id="btncheck1" name="sortare" value="true">
+                <label class="form-check-label" for="btncheck1">
+                    <h5>Sortare elemente filtrate</h5>
+                </label>
                 <center>
                     <input type="submit" class="custom-button -blue" style="margin-top: 10px;" value="Filtreaza">
                 </center>
@@ -32,23 +47,23 @@
         <!-- /FORM DE FILTRARE -->
 
         <!-- AFISARE ELEMENTE -->
-        <div class="row align-items-start justify-content-center">
+        <div class="row align-items-stretch d-flex justify-content-center">
             <% for(let analiz of locals.analize) { %>
-                <div class="col-lg-4 col-md-6">
-                    <div class="analiza card p-3 bg-white" style="margin: 10px 5px 10px 5px">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-10" style="margin-top:15px;">
+                    <div class="d-flex flex-column items analiza card p-3 bg-white">
                         <div class="about-product text-center mt-2">
                             <div>
-                                <h4 class="display-6" style="color:rgb(31, 179, 110)"><%- analiz.nume %></h4>
+                                <h4 class="display-6" style="color:rgb(9, 141, 79); font-size: 30px;"><%- analiz.nume %></h4>
                                 <h6 class="mt-0 text-black-50"></h6>
                             </div>
                         </div>
-                        <div class="stats mt-2">
-                            <div class="d-flex justify-content-between p-price"><span>Timp de executie:</span><span><%- analiz.timpexecutie %></span></div>
-                            <div class="d-flex justify-content-between p-price"><span>Tip analiza:</span><span></span><%- analiz.tipanaliza %></div>
-                            <div class="d-flex justify-content-between p-price"><span>Pret:</span><span style='color:rgb(228, 35, 35)'><%- analiz.pret %> RON</span></div>
+                        <div class="stats mt-2" style="margin-top: auto;">
+                            <div class="p-price"><center><span>Timp de executie: </span><span style="color:rgb(9, 141, 79);"><%- analiz.timpexecutie %></span></center></div>
+                            <div class="p-price"><center><span>Tip analiza: </span><span style="color:rgb(9, 141, 79);"><%- analiz.tipanaliza %></span></center></div>
+                            <div class="p-price"><center><span>Pret:</span><span style='color:rgb(228, 35, 35)'><b><%- analiz.pret %> RON </b></span></center></div>
                         </div>
                         <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>$7,197.00</span></div> -->
-                        <center style="margin-top: 10px;">
+                        <center style="margin-top: auto;">
                             <form action="/analize/adauga/<%-analiz.id_analize%>" method="POST">
                                 <input type="submit" class="custom-button -green"  value="Adauga">
                             </form>
