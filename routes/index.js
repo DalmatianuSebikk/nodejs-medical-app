@@ -95,7 +95,7 @@ router.get(['/', '/index'], async (req, res) => {
     // res.render('pagini/index.ejs');
     // IAU PRIMELE 3 ELEMENTE DIN TABELA DE ANALIZE
     var stringQuery1 = 'SELECT * FROM analize LIMIT 4';
-    var stringQuery2 = 'SELECT * FROM consultatii LIMIT 4';
+    var stringQuery2 = 'SELECT * FROM consultatii ORDER BY nume LIMIT 4';
     var stringQuery3 = 'SELECT * FROM ecografii LIMIT 4';
     const rezultat = await client.query(stringQuery1, function(err, rez){
         // console.log(err, rez);
@@ -358,8 +358,8 @@ router.get('/analize', async (req, res) => {
 
 router.get('/consultatii-ecografii', async(req, res) => {
     console.log('Request pentru pagina de consultatii si ecografii');
-    var stringQuery = "Select * FROM consultatii";
-    var stringQuery2 = "Select * FROM ecografii";
+    var stringQuery = "Select * FROM consultatii ORDER BY nume";
+    var stringQuery2 = "Select * FROM ecografii ORDER BY nume";
     const rezultat = client.query(stringQuery, function(err, rez) {
         console.log(err, rez);
         client.query(stringQuery2, function(err, rez2){
