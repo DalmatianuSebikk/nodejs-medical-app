@@ -29,6 +29,7 @@ const createTransporter = async () => {
     const accessToken = await new Promise((resolve, reject) => {
         oauth2Client.getAccessToken((err, token) => {
           if (err) {
+            console.log(err);
             reject(err);
           }
           resolve(token);
